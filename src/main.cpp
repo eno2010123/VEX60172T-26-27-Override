@@ -1,85 +1,50 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       Eno                                                       */
-/*    Created:      8/29/2026, 6:09:06 PM                                     */
+/*    Author:       enoze                                                     */
+/*    Created:      8/20/2026, 2:45:57 PM                                     */
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
-
 #include "vex.h"
-
+ 
 using namespace vex;
-
-// A global instance of competition
-competition Competition;
-
+ 
+// A global instance of vex::brain used for printing to the V5 brain screen
+vex::brain       Brain;
+ 
 // define your global instances of motors and other devices here
-motor frontLeft(PORT1, gearSetting::ratio6_1, false);
-motor frontRight(PORT2, gearSetting::ratio6_1, true);
-motor backLeft(PORT3, gearSetting::ratio6_1, false);
-motor backRight(PORT4, gearSetting::ratio6_1, true);
-motor lift(PORT5, gearSetting::ratio6_1, false);
-motor intake(PORT6, gearSetting::ratio18_1, false);
-motor claw(PORT7, gearSetting::ratio18_1, false);
-controller Controller1;
-motor_group LeftDrive(frontLeft, backLeft);
-motor_group RightDrive(frontRight, backRight);
-
-
-
-
-
-
-void pre_auton(void) {
-
-  // All activities that occur before the competition starts
-  // Example: clearing encoders, setting servo positions, ...
-}
-
-
-
-void autonomous(void) {
-
-}
-
-
-void usercontrol(void) {
-  while (true) {
-        // Right joystick UP/DOWN (Forward/Backward)
-        int forward = Controller1.Axis2.position();
-        // Right joystick LEFT/RIGHT (Turning)
-        int turn    = Controller1.Axis1.position();
-
-        // Small deadband to prevent the robot from drifting when you let go of the stick
-        if (abs(forward) < 5) forward = 0;
-        if (abs(turn) < 5) turn = 0;
-
-        // Calculate final motor speeds
-        int leftSpeed  = forward + turn;
-        int rightSpeed = forward - turn;
-
-        // Spin the motor groups
-        LeftDrive.spin(vex::directionType::fwd, leftSpeed, vex::velocityUnits::pct);
-        RightDrive.spin(vex::directionType::fwd, rightSpeed, vex::velocityUnits::pct);
-
-        vex::task::sleep(20);
-    }
-}
-
-//
-// Main will set up the competition functions and callbacks.
-//
+ 
+ 
 int main() {
-  // Set up callbacks for autonomous and driver control periods.
-  Competition.autonomous(autonomous);
-  Competition.drivercontrol(usercontrol);
-
-  // Run the pre-autonomous function.
-  pre_auton();
-
-  // Prevent main from exiting with an infinite loop.
-  while (true) {
-    wait(100, msec);
+ 
+    Brain.Screen.printAt( 10, 50, "Hello V5" );
+ 
+    #include "vex.h"
+ 
+using namespace vex;
+ 
+// Define the 4 individual motors (Port, Gearset, Reversed)
+motor LeftFront  = motor(PORT1, ratio18_1, false);
+motor LeftBack   = motor(PORT2, ratio18_1, false);
+motor RightFront = motor(PORT3, ratio18_1, true); 
+motor RightBack  = motor(PORT4, ratio18_1, true);  
+ 
+// Group them into motor groups
+motor_group LeftDriveSmart  = motor_group(LeftFront, LeftBack);
+motor_group RightDriveSmart = motor_group(RightFront, RightBack);
+ 
+// Combine groups into a Drivetrain object (Groups, WheelTravel, TrackWidth, WheelBase, Unit)
+drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.2, 320, 240, mm, 1.0);
+ 
+// Define the controller
+controller Controller1 = controller(primary);
+ 
+while (true) {
+    LeftDriveSmart.spin(forward, Controller1.Axis3.position(), percent);
+    RightDriveSmart.spin(forward, Controller1.Axis2.position(), percent);
+ 
+    wait(20, msec);
   }
+ 
 }

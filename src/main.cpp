@@ -27,7 +27,7 @@ motor_group RightDrive(frontRight, backRight);
 // subsystem motors
 motor lift(PORT19, gearSetting::ratio36_1, false);
 motor arm(PORT4, gearSetting::ratio36_1, false);
-intake(PORT20, gearSetting::ratio36_1, false);
+motor intake(PORT20, gearSetting::ratio36_1, false);
 motor claw(PORT6, gearSetting::ratio18_1, false);
 
 // pneumatics and button

@@ -15,11 +15,11 @@ competition Competition;
 brain Brain;
 controller Controller1;
 
-// drivetrain motors
-motor frontLeft(PORT21, gearSetting::ratio6_1, true);
-motor backLeft(PORT10, gearSetting::ratio6_1, true);
-motor frontRight(PORT13, gearSetting::ratio6_1, false);
-motor backRight(PORT3, gearSetting::ratio6_1, false);
+// drivetrain motors (left false, right true)
+motor frontLeft(PORT21, gearSetting::ratio6_1, false);
+motor backLeft(PORT10, gearSetting::ratio6_1, false);
+motor frontRight(PORT13, gearSetting::ratio6_1, true);
+motor backRight(PORT3, gearSetting::ratio6_1, true);
 
 motor_group LeftDrive(frontLeft, backLeft);
 motor_group RightDrive(frontRight, backRight);
@@ -61,8 +61,8 @@ void pre_auton(void) {
   claw.setStopping(hold);
   intake.setStopping(coast);
 
-  // limit arm power and lock position
-  arm.setMaxTorque(65, pct);
+  // full torque with locked hold position
+  arm.setMaxTorque(100, pct);
   arm.stop(hold);
   lift.stop(hold);
   
@@ -74,11 +74,11 @@ void autonomous(void) {
   LeftDrive.setStopping(brake);
   RightDrive.setStopping(brake);
   arm.setStopping(hold);
-  arm.setMaxTorque(65, pct);
+  arm.setMaxTorque(100, pct);
 
   // grab preload and lift arm
   claw.spin(fwd, 80, pct);
-  arm.spin(fwd, 30, pct);
+  arm.spin(fwd, 45, pct);
   wait(500, msec);
   arm.stop(hold);
   claw.stop(hold);
@@ -107,13 +107,14 @@ void autonomous(void) {
 void usercontrol(void) {
   // lock arm and lift on start
   arm.setStopping(hold);
-  arm.setMaxTorque(65, pct);
+  arm.setMaxTorque(100, pct);
   arm.stop(hold);
 
   lift.setStopping(hold);
   claw.setStopping(hold);
 
-  const int ARM_SPEED = 35;
+  // barmspeed higher
+  const int ARM_SPEED = 50;
 
   while (true) {
     // split arcade drive

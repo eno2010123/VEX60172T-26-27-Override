@@ -1,0 +1,19 @@
+{
+	"extension": {
+		"version": "0.8.2026020401",
+		"json": 2
+	},
+	"project": {
+		"name": "vaxv5override2627",
+		"description": "",
+		"creationDate": "10/23/2026, 3:05:08 PM",
+		"platform": "V5",
+		"language": "cpp",
+		"slot": 4,
+		"sdkVersion": "V5_20240802_15_00_00",
+		"cpp": {
+			"includePath": [],
+			"printf_float": true
+		}
+	}
+}

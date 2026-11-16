@@ -4,7 +4,8 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-        "c:\\Users\\enoze\\OneDrive\\Documents\\Robotics\\pros-transition-overidecomp2\\include"
+        "c:\\Users\\enoze\\OneDrive\\Documents\\Robotics\\pros-transition-overidecomp2\\include",
+        "c:\\Users\\enoze\\Downloads\\VEX60172T-26-27-Override\\include"
       ],
       "defines": [
         "_DEBUG",
@@ -17,7 +18,7 @@
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "c:\\Users\\enoze\\OneDrive\\Documents\\Robotics\\pros-transition-overidecomp2"
+          "c:\\Users\\enoze\\Downloads\\VEX60172T-26-27-Override"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

@@ -283,8 +283,8 @@ bool yellow_detected = proximity > 100 && hue >= 40 && hue <= 70;
 
 color_motor.move(yellow_detected ? 127 : 0);
 
-int forward = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-int turn = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+int forward = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+int turn = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 chassis.arcade(forward, turn);
 
 if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {

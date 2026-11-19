@@ -5,20 +5,21 @@
       "includePath": [
         "${workspaceFolder}/**",
         "c:\\Users\\enoze\\OneDrive\\Documents\\Robotics\\pros-transition-overidecomp2\\include",
-        "c:\\Users\\enoze\\Downloads\\VEX60172T-26-27-Override\\include"
+        "c:\\Users\\enoze\\Downloads\\VEX60172T-26-27-Override\\include",
+        "\\\\sokar\\students\\enozelo\\My Documents\\VEX60172V-26-27-Override\\include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "c:\\Users\\enoze\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "c:\\Users\\ENOZELO\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "c:\\Users\\enoze\\Downloads\\VEX60172T-26-27-Override"
+          "\\\\sokar\\students\\enozelo\\My Documents\\VEX60172V-26-27-Override"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

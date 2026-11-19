@@ -289,7 +289,7 @@ chassis.arcade(forward, turn);
 
 if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
 dr4b_motors.move(127);
-} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 dr4b_motors.move(-127);
 } else {
 dr4b_motors.move(0);

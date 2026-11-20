@@ -5,7 +5,7 @@
 #include <cmath>
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-
+//Defines all ports and rotation for the entire robot.
 pros::MotorGroup left_motors({12, -11}, pros::MotorGearset::blue);
 pros::MotorGroup right_motors({19, -20}, pros::MotorGearset::blue);
 pros::MotorGroup dr4b_motors({-1, 9}, pros::MotorGearset::red);
